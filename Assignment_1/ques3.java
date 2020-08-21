@@ -15,6 +15,30 @@ public class ques3 {
         }
     }
 
+    private static void allPaths(int vertices, int source, int destination, boolean[][] graph, ArrayList<Integer> v,
+                                 int distance, boolean[] visited) {
+        v.add(source);
+        visited[source] = true;
+        if (source == destination) {
+            System.out.print("\nPath: ");
+            for (Integer integer : v) {
+                System.out.print(integer + 1 + " ");
+            }
+            System.out.println("\nDistance From Source: " + distance);
+            visited[source] = false;
+            v.remove(v.size() - 1);
+            return;
+        }
+
+        for (int i=0; i<vertices; i++) {
+            if (visited[i] == false && graph[source][i]) {
+                allPaths(vertices, i, destination, graph, v, distance + 1, visited);
+            }
+        }
+        visited[source] = false;
+        v.remove(v.size() - 1);
+    }
+
     private static void shortestPath(int vertices, int source, int destination, int edges, Edge[] edgeList) {
         int[] parent = new int[vertices];
         int[] distance = new int[vertices];
@@ -52,30 +76,6 @@ public class ques3 {
         }
         System.out.println("\nDistance From Source: " + distance[destination]);
 
-    }
-
-    private static void allPaths(int vertices, int source, int destination, boolean[][] graph, ArrayList<Integer> v,
-                                 int distance, boolean[] visited) {
-        v.add(source);
-        visited[source] = true;
-        if (source == destination) {
-            System.out.print("\nPath: ");
-            for (Integer integer : v) {
-                System.out.print(integer + 1 + " ");
-            }
-            System.out.println("\nDistance From Source: " + distance);
-            visited[source] = false;
-            v.remove(v.size() - 1);
-            return;
-        }
-
-        for (int i=0; i<vertices; i++) {
-            if (visited[i] == false && graph[source][i]) {
-                allPaths(vertices, i, destination, graph, v, distance + 1, visited);
-            }
-        }
-        visited[source] = false;
-        v.remove(v.size() - 1);
     }
 
     public static void main(String args[]) {
