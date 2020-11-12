@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<form name="form_name" >
+  <label for="string">Input String</label>
+  <input type="text" id="string" name="string">
+  <button onclick="isValidString();"> Check </button>
+</form>
+<div id="ans" > </div>
+</body>
+</html>
+
+<script>
+function isValidString() {
+  s = document.form_name.string.value; 
+
+  const obj = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+  }
+
+  const stack = [];
+
+  for (const paran of s) {
+    if (obj.hasOwnProperty(paran)) {
+      stack.push(paran)
+    } else {
+      const closeParan = stack.pop();
+      if (paran !== obj[closeParan]) {
+      	alert(s + " is NOT " + " Balanced");
+        return false;
+      }
+    }
+  }
+  alert(s + " is " + " Balanced");
+  return stack.length === 0;
+}
+</script>
+</html>
+
