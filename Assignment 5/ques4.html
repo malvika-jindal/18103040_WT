@@ -1,0 +1,38 @@
+<script>
+function createTree(rows=30) {
+    var output = '<div style="display: flex; justify-content: center; margin:50px">';
+    output += '<div style="font-family:Courier,sans-serif;">';
+
+	for (let i = 0; i < rows; i++) {
+
+        for (let j =0; j < rows - i; j++) output += '&nbsp;';
+        if(i==0) output += '*';
+    	else {
+        	for (let j = 0; j <= i; j++) output += '0&nbsp;';
+    	}
+        output +='<br>'
+    } 
+	for(let i = 0; i<5; ++i) {
+		for(let j = 0; j<rows - 4; ++j) {
+			output += '&nbsp;';
+		}
+		for(let j = 0; j<5; ++j) {
+			output += '0&nbsp;';
+		}
+		output+='<br>';
+	}
+	for(let i = 0; i<1; ++i) {
+		for(let j = 0; j < rows-12; ++j) {
+			output+='&nbsp;';
+		}
+		for(let j = 0; j < 13; ++j) {
+			output+='0&nbsp;';
+		}
+		output+='<br>';
+	}
+	output += '</div>';
+	output += '</div>';
+	document.write(output);
+}
+createTree(30);
+</script>
