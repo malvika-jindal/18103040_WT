@@ -19,6 +19,7 @@ public class viva {
         subString=sortString(subString);
         int ans = 0;
         int j;
+        
         for (int i = 0;i<= txt_length-sub_length;i++)
         {
             String temp = string.substring(i,i+sub_length);
