@@ -1,6 +1,12 @@
 import java.util.Scanner;
-
-public class ques1 {
+import java.util.Arrays;
+public class viva {
+    public static String sortString(String inputString)
+    {
+        char tempArray[] = inputString.toCharArray();
+        Arrays.sort(tempArray);
+        return new String(tempArray);
+    }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter String: ");
@@ -10,19 +16,15 @@ public class ques1 {
         input.close();
         int sub_length = subString.length();
         int txt_length = string.length();
+        subString=sortString(subString);
         int ans = 0;
         int j;
         for (int i = 0;i<= txt_length-sub_length;i++)
         {
-            for (j = 0;j<sub_length;j++) {
-                if (string.charAt(i+j)!= subString.charAt(j)) {
-                    break;
-                }
-            }
-            if (j==sub_length) {
+            String temp = string.substring(i,i+sub_length);
+            temp = sortString(temp);
+            if(subString.equals(temp))
                 ans++;
-                j=0;
-            }
         }
         System.out.println(ans);
     }
